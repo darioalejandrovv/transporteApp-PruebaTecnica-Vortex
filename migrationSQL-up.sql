@@ -39,20 +39,3 @@ CREATE TABLE public.Vehiculo (
   updated_by INTEGER NOT NULL DEFAULT 0,
   CONSTRAINT fk_vehiculo_conductor FOREIGN KEY (conductor_id) REFERENCES public.Conductor(id)
 );
-
--- DOWN -----------------------------------------------------------------------
-
--- Eliminar restricciones de clave externa en la tabla Vehiculo
-ALTER TABLE IF EXISTS public.Vehiculo DROP CONSTRAINT IF EXISTS fk_vehiculo_conductor;
-
--- Eliminar restricciones de clave externa en la tabla Pedido
-ALTER TABLE IF EXISTS public.Pedido DROP CONSTRAINT IF EXISTS fk_pedido_conductor;
-
--- Eliminar la tabla Vehiculo
-DROP TABLE IF EXISTS public.Vehiculo;
-
--- Eliminar la tabla Pedido
-DROP TABLE IF EXISTS public.Pedido;
-
--- Eliminar la tabla Conductor
-DROP TABLE IF EXISTS public.Conductor;

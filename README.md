@@ -10,9 +10,46 @@ Capas de abstracción:
 Se sigue el formato de respuesta de los endpoints según Swagger/OPENAPI.
 Gestor de manejo de error integrado.
 Uso de SOLID y Arquitecturas limpias.
-Se incluye archivo de migración de DB en Postgres para subida (UP) y baja de DB (down), con nombre "migrationSQL.sql" en carpeta raiz.
-Para correr el backend en consola el comando "npm run start".
+Se incluye archivo de migración de DB en Postgres para subida (UP) y baja de DB (down), con nombre "migrationSQL-up.sql" en carpeta raiz.
+
+
+
+
+# PASOS PARA EJECUTAR EL BACKEND
+- Teniendo instalado postgres crear una database llamada "transport"
+- verificar que las credenciales del motor de base de datos correspondan con los del JSON de config, presente en el archivo src/datasources/db.datasource.ts
+const config = {
+  name: 'db',
+  connector: 'postgresql',
+  url: '',
+  host: 'localhost',
+  port: 5433,
+  user: 'postgres',
+  password: 'postgres',
+  schema: 'public',
+  database: 'transport'
+};
+
+- En la database correr el script de migración "migrationSQL-up"
+- Para correr el backend en consola el comando "npm run start".
+
 Descripción de los endpoints y tipos de respuesta en la siguiente sección.
+
+
+# EJEMPLO BODY DE ENDPOINTS (campos mínimos)
+
+transportador = {
+  "identificacion": "1090456789",
+  "apellido": "Vasquez",
+  "nombre": "Dario",
+  "telefono": "3114664536",
+  "direccion": "Evergreen 123"
+}
+vehiculo = {
+  "modelo": "2011",
+  "placa": "SWE-34B",
+  "capacidad": "12"
+}
 
 
 # DESCRIPCION DE ENDPOINT DEL RESTFULLAPI SEGUN OPENAPI
